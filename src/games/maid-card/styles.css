@@ -1,0 +1,355 @@
+.page-shell--game {
+  display: block;
+  min-height: 100vh;
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.game-stage {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  width: min(100%, 860px);
+  margin: 0 auto;
+}
+
+.game-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.game-stage__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.game-stage__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.flip-card {
+  width: min(100%, 400px);
+  aspect-ratio: 0.72;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+.flip-card:disabled {
+  cursor: wait;
+}
+
+.flip-card__inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.75s cubic-bezier(0.2, 0.7, 0, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.is-face-up .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 34px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(54, 31, 21, 0.22);
+}
+
+.flip-card__face--back {
+  padding: 24px;
+  align-items: center;
+  gap: 16px;
+  color: #fff8f2;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 35%),
+    radial-gradient(circle at top, rgba(255, 215, 190, 0.22), transparent 24%),
+    linear-gradient(160deg, #8d3f27 0%, #4e2118 58%, #29100c 100%);
+}
+
+.flip-card__face--back::before,
+.flip-card__face--back::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 230, 208, 0.28);
+}
+
+.flip-card__face--back::after {
+  inset: 36px;
+}
+
+.flip-card__face--front {
+  padding: 28px 24px;
+  background:
+    radial-gradient(circle at top right, rgba(219, 109, 63, 0.2), transparent 22%),
+    linear-gradient(180deg, #fffaf3 0%, #f5dfbf 100%);
+  color: var(--text);
+  transform: rotateY(180deg);
+}
+
+.flip-card__brand {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flip-card__hint {
+  position: relative;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.92rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.flip-card__rank {
+  font-size: clamp(4.6rem, 10vw, 6.4rem);
+  line-height: 1;
+  font-weight: 900;
+}
+
+.flip-card__title {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.flip-card__divider {
+  width: 100%;
+  height: 1px;
+  margin: 18px 0;
+  background: rgba(55, 31, 19, 0.12);
+}
+
+.flip-card__content {
+  display: grid;
+  gap: 10px;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #5b4335;
+}
+
+.flip-tip,
+.rules-list,
+.dialog-intro,
+.game-note {
+  color: var(--muted);
+}
+
+.flip-tip {
+  margin: 0;
+  font-size: 0.98rem;
+  text-align: center;
+}
+
+.game-note {
+  margin: 0;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.rules-list {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: rgba(28, 18, 12, 0.58);
+  backdrop-filter: blur(6px);
+}
+
+.dialog-panel {
+  width: min(760px, 100%);
+  max-height: min(88vh, 920px);
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: #fffaf3;
+  box-shadow: 0 30px 90px rgba(32, 17, 10, 0.28);
+}
+
+.dialog-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 22px 18px;
+  background: rgba(255, 250, 243, 0.96);
+  border-bottom: 1px solid rgba(89, 52, 34, 0.08);
+}
+
+.dialog-header h2 {
+  margin: 6px 0 0;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1;
+}
+
+.dialog-close,
+.secondary-link--button,
+.game-card__link--button {
+  appearance: none;
+  border: 1px solid rgba(71, 40, 24, 0.12);
+  cursor: pointer;
+  font: inherit;
+}
+
+.dialog-close {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+}
+
+.dialog-body {
+  display: grid;
+  gap: 20px;
+  padding: 22px;
+}
+
+.dialog-intro {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.editor-list {
+  display: grid;
+  gap: 14px;
+}
+
+.editor-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid rgba(89, 52, 34, 0.1);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.editor-card__heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.editor-card__heading strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: rgba(219, 109, 63, 0.12);
+  color: var(--accent-deep);
+}
+
+.editor-card__input {
+  width: 100%;
+  min-height: 88px;
+  resize: vertical;
+  border: 1px solid rgba(89, 52, 34, 0.16);
+  border-radius: 16px;
+  padding: 12px 14px;
+  font: inherit;
+  line-height: 1.6;
+  color: var(--text);
+  background: #fffaf6;
+}
+
+.dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 780px) {
+  .page-shell--game {
+    padding-top: 16px;
+  }
+
+  .game-stage__header {
+    flex-direction: column;
+  }
+
+  .game-stage__actions {
+    justify-content: flex-start;
+  }
+
+  .flip-card {
+    width: min(100%, 340px);
+  }
+}
+
+@media (max-width: 640px) {
+  .game-stage {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .flip-card {
+    width: min(100%, 100%);
+    max-width: 320px;
+  }
+
+  .dialog-backdrop {
+    padding: 8px;
+  }
+
+  .dialog-panel {
+    width: 100%;
+    max-height: 92vh;
+    border-radius: 22px;
+  }
+
+  .dialog-header,
+  .dialog-body {
+    padding: 16px;
+  }
+
+  .dialog-actions {
+    justify-content: stretch;
+  }
+
+  .dialog-actions > * {
+    width: 100%;
+  }
+}

@@ -1,0 +1,302 @@
+:root {
+  color-scheme: light;
+  --bg: #f6efe2;
+  --panel: rgba(255, 250, 242, 0.84);
+  --panel-strong: #fff7ee;
+  --text: #2d2017;
+  --muted: #6e5546;
+  --line: rgba(89, 52, 34, 0.12);
+  --accent: #db6d3f;
+  --accent-deep: #8a3520;
+  --teal: #2e7a78;
+  --shadow: 0 20px 60px rgba(74, 42, 26, 0.14);
+  font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(219, 109, 63, 0.18), transparent 22%),
+    linear-gradient(135deg, #f8f0e3 0%, #f6e3bb 48%, #f2d5b5 100%);
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 64px;
+}
+
+.hero-panel,
+.catalog-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.hero-panel,
+.catalog-panel {
+  padding: 28px;
+}
+
+.hero-panel {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 20px;
+  min-height: 360px;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.hero-copy h1,
+.section-heading h2,
+.section-heading h1,
+.rules-panel h2 {
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  line-height: 0.95;
+  max-width: 9ch;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+
+.hero-text,
+.game-card__description,
+.game-card__subtitle {
+  color: var(--muted);
+}
+
+.hero-text {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  max-width: 48ch;
+}
+
+.hero-orbit {
+  position: relative;
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+}
+
+.hero-orbit::before,
+.hero-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 999px;
+  border: 1px dashed rgba(78, 44, 28, 0.15);
+}
+
+.hero-orbit::after {
+  inset: 54px;
+}
+
+.orbit-card {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 124px;
+  aspect-ratio: 1;
+  border-radius: 28px;
+  background: var(--panel-strong);
+  border: 1px solid rgba(66, 36, 22, 0.1);
+  box-shadow: 0 18px 30px rgba(71, 39, 24, 0.08);
+  font-weight: 800;
+}
+
+.orbit-card--one {
+  top: 26px;
+  left: 24px;
+  transform: rotate(-10deg);
+}
+
+.orbit-card--two {
+  right: 28px;
+  top: 80px;
+  transform: rotate(10deg);
+  background: linear-gradient(160deg, #fff7e8, #ffd7c3);
+}
+
+.orbit-card--three {
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+  background: linear-gradient(160deg, #e9fff8, #c6f3ef);
+}
+
+.catalog-panel {
+  margin-top: 20px;
+}
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.section-heading h2,
+.section-heading h1,
+.rules-panel h2 {
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 0.96;
+}
+
+.section-heading--compact h1 {
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px;
+  min-height: 260px;
+  border-radius: 28px;
+  border: 1px solid rgba(82, 48, 30, 0.1);
+  background:
+    radial-gradient(circle at top right, rgba(219, 109, 63, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(255, 248, 239, 0.9), rgba(255, 250, 245, 0.72));
+}
+
+.game-card__topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.game-card h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.game-card__subtitle,
+.game-card__description {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.status-pill,
+.game-card__link,
+.secondary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.status-pill {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.status-pill--available {
+  background: rgba(46, 122, 120, 0.12);
+  color: var(--teal);
+}
+
+.game-card__link,
+.secondary-link {
+  margin-top: auto;
+  padding: 12px 18px;
+  border: 1px solid rgba(71, 40, 24, 0.12);
+}
+
+.game-card__link {
+  background: linear-gradient(160deg, #2e7a78, #134846);
+  color: #f5fffe;
+}
+
+.secondary-link {
+  background: rgba(255, 255, 255, 0.52);
+  color: var(--text);
+}
+
+@media (max-width: 900px) {
+  .hero-panel,
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+  }
+
+  .hero-orbit {
+    min-height: 240px;
+  }
+
+  .orbit-card {
+    width: 108px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 20px, 1180px);
+    padding: 20px 0 40px;
+  }
+
+  .hero-panel,
+  .catalog-panel {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .game-card h3 {
+    font-size: 1.7rem;
+  }
+}
