@@ -6,12 +6,14 @@
 
 线上地址：
 
-- https://game-hub.kongwenyancn.workers.dev
+- https://gamehub.hunao.online
 
 ## 当前功能
 
 - React + Vite 单页应用
 - Cloudflare Workers Static Assets 部署
+- 自定义域 `gamehub.hunao.online`
+- 显式关闭 `workers.dev`
 - 首页游戏目录，只展示已上线游戏
 - `小姐牌` 在线随机翻牌
 - 移动端适配
@@ -87,6 +89,8 @@ npm run deploy
 当前 `wrangler.jsonc` 中已经配置了：
 
 - `dist` 作为静态资源目录
+- `workers.dev` 关闭
+- `gamehub.hunao.online` 自定义域
 - SPA 路由回退
 - `/api/*` 由 Worker 优先处理
 

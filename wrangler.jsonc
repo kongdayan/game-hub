@@ -3,6 +3,7 @@
   "name": "game-hub",
   "main": "./worker/index.ts",
   "compatibility_date": "2026-04-24",
+  "workers_dev": false,
   "routes": [
     {
       "pattern": "gamehub.hunao.online",
